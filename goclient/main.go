@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 	"net/http"
 
@@ -34,6 +35,33 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, config.AuthCodeURL(state), http.StatusFound)
+	})
+
+	http.HandleFunc("/auth/callback", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Query().Get("state") != state {
+			http.Error(w, "Invalid State", http.StatusBadRequest)
+			return
+		}
+
+		token, err := config.Exchange(ctx, r.URL.Query().Get("code"))
+		if err != nil {
+			http.Error(w, "Token exchange error", http.StatusInternalServerError)
+			return
+		}
+
+		resp := struct {
+			AccessToken *oauth2.Token
+		}{
+			token,
+		}
+
+		data, err := json.Marshal(resp)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		w.Write(data)
 	})
 
 	log.Fatal(http.ListenAndServe(":8081", nil))
