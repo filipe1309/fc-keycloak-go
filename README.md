@@ -1,4 +1,4 @@
-# <p align="center">[PROJECT_NAME] 💀</p>
+# <p align="center">KeyCloack GO </p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Tools-Docker-informational?style=flat-square&logo=docker&color=2496ED" alt="Docker" />
@@ -23,52 +23,36 @@ This project was developed following [[COURSE_NAME]]([COURSE_LINK]) course.
 
 ## :computer: Technologies
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
-- [Dockerize](https://github.com/jwilder/dockerize)
-- [PHP](https://www.php.net/)
 - [Go](https://golang.org/)
-- [Node.js](https://nodejs.org/en/)
-- [Nginx](https://www.nginx.com/)
-- [MySQL](https://www.mysql.com/)
-- [Node MySQL2](https://www.npmjs.com/package/mysql2)
+- [Keycloak](https://www.keycloak.org/)
 
 ## :scroll: Requirements
 
-- [Docker](https://www.docker.com/)
-- [Docker Compose](https://docs.docker.com/compose/)
+- [Go](https://golang.org/)
+- [Keycloak](https://www.keycloak.org/)
+
+<!-- - [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/) -->
 
 ## :cd: Installation
 
 ```sh
-git clone [PROJECT_REPO_LINK]
+git clone git@github.com:filipe1309/fc-keycloack-go.git
 ```
 
 ```sh
-cd [PROJECT_REPO_NAME]
+cd fc-keycloack-go
 ```
 
 ## :runner: Running
 
 ```sh
-docker-compose up
+cd goclient
+
+go run main.go
 ```
 
-> Access http://localhost:8000
-
-## :white_check_mark: Tests
-
-After up the container:
-
-```sh
-docker-compose exec -t [CONTAINER_SERVICE_NAME] ./vendor/bin/phpunit
-```
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+> Access http://localhost:8080
 
 ## License
 
