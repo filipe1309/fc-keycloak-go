@@ -49,10 +49,26 @@ func main() {
 			return
 		}
 
+		idToken, ok := token.Extra("id_token").(string)
+		if !ok {
+			http.Error(w, "Fail to get IDToken", http.StatusInternalServerError)
+			return
+		}
+
+		userInfo, err := provider.UserInfo(ctx, oauth2.StaticTokenSource(token))
+		if err != nil {
+			http.Error(w, "UserInfo error", http.StatusInternalServerError)
+			return
+		}
+
 		resp := struct {
 			AccessToken *oauth2.Token
+			IDToken     string
+			UserInfo    *oidc.UserInfo
 		}{
 			token,
+			idToken,
+			userInfo,
 		}
 
 		data, err := json.Marshal(resp)
