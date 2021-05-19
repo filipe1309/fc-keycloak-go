@@ -14,3 +14,6 @@ Login / Auth
 http://localhost:8081/
 
 https://jwt.io/
+
+cd theme
+-> docker-compose up
