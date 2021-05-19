@@ -34,10 +34,19 @@ cd fc-keycloak-go
 
 ## :runner: Running
 
+Go App:
+
 ```sh
 cd goclient
-
 go run main.go
+```
+
+OR
+
+Docker:
+
+```sh
+docker-compose up
 ```
 
 > Access http://localhost:8080

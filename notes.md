@@ -17,3 +17,13 @@ https://jwt.io/
 
 cd theme
 -> docker-compose up
+
+```sh
+-> docker-compose exec app bash
+bash-4.4$ cd /opt/jboss/keycloak/themes/
+bash-4.4$ cp -R keycloak/* mytheme/
+
+rm -rf mytheme/*
+bash-4.4$ cp -R base/* mytheme/
+
+```
